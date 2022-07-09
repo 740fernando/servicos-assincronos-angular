@@ -11,7 +11,7 @@
                 </div>  
                 <div class="col-6">
                     <div class="form-floating">
-                        <input type="time" class="form-control" formControlName="duracao" id="duracao" placeholder="Digite a duracao do curso">
+                        <input  type="number" min="0" class="form-control" formControlName="duracao" id="duracao" placeholder="Digite a duracao do curso">
                         <label for="duracao">Duracao</label>
                     </div>
                 </div>
@@ -35,7 +35,7 @@
             <div class="row my-4">
                 <div class="form-group col-12 mt-4">
                     <button routerLink="/" type="button" class="btn btn-outline-danger float-start">Cancelar</button>
-                    <button type="button" class="btn btn-outline-success float-end" (click)="createCourse()">Enviar</button>
+                    <button type="button" class="btn btn-outline-success float-end" (click)="actionButton()" routerLink="/">Enviar</button>
                 </div>
             </div>
         </form>

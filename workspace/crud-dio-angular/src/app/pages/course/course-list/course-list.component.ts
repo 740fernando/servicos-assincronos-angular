@@ -19,12 +19,22 @@ export class CourseListComponent implements OnInit {
     this.courseService.getCourses().subscribe(response =>{
       this.courses = response;
       console.log(this.courses);
+    },(error) => {
+      console.log('Error ao executar',error.status)
+    }, ()=>{
+      return this.getCourses();
     });
   }
   
   deleteCourse(id: number): void {
-    this.courseService.deleteCourse(id).subscribe(response => {
-      console.log(`Usuario excluido`)
-    })
+    if(confirm("Deseja excluir ? ")){
+      this.courseService.deleteCourse(id).subscribe(response => {
+        console.log(`Usuario excluido`);
+      }, (error) => {
+        console.log('Error ao executar',error.status)
+      }, ()=>{
+        this.getCourses();
+      })
+    }
   }
 }
