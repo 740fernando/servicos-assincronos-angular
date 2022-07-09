@@ -12,14 +12,19 @@ export class CourseListComponent implements OnInit {
   constructor(private courseService: CourseService) { }
 
   ngOnInit() {
-    this.getUsers();
+    this.getCourses();
   }
 
-  getUsers(){
+  getCourses(){
     this.courseService.getCourses().subscribe(response =>{
       this.courses = response;
       console.log(this.courses);
     });
   }
-
+  
+  deleteCourse(id: number): void {
+    this.courseService.deleteCourse(id).subscribe(response => {
+      console.log(`Usuario excluido`)
+    })
+  }
 }
