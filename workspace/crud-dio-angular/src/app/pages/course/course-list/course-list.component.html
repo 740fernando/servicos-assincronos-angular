@@ -9,19 +9,19 @@
                 <tr>
                    <th>id</th>
                    <th>Curso</th>
+                   <th>Duracao</th>
                    <th>Inicio</th>
                    <th>Fim</th>
-                   <th>Duracao</th>
                    <th colspan="2"></th> 
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>A arquitetura de componentes e a gestão da complexidade no front-end</td>
-                    <td>30/06/2022</td>
-                    <td>03/07/2022</td>
-                    <td>2 hs</td>
+                <tr *ngFor="let c of courses">
+                    <td>{{c.id}}</td>
+                    <td>{{c.curso}}</td>
+                    <td>{{c.duracao}}</td>
+                    <td>{{c.inicio}}</td>
+                    <td>{{c.fim}}</td>
                     <td>
                         <button class="btn btn-primary">Editar</button>
                     </td>
