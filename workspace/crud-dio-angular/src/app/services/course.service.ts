@@ -15,14 +15,19 @@ export class CourseService {
   }
 
   constructor(private httpClient: HttpClient) { }
-
+ 
+  // Salva curso no banco - CREATE
+ createtCourse(course : Course):Observable<Course>{
+  return this.httpClient.post<Course>(this.apiUrl, course, this.httpOptions)
+  }
+  
   // Retorna a lista de  cursos - READ
   getCourses():Observable<Course[]>{
     return this.httpClient.get<Course[]>(this.apiUrl)
   }
 
-  // Salva curso no banco - CREATE
-  createtCourse(course : Course):Observable<Course>{
-    return this.httpClient.post<Course>(this.apiUrl, course, this.httpOptions)
+  // Exclui o curso do banco - DELETE
+  deleteCourse(id : number):Observable<Course>{
+    return this.httpClient.delete<Course>(`${this.apiUrl}/id/${id}`);
   }
 }
