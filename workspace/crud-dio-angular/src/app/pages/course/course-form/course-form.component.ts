@@ -34,7 +34,7 @@ export class CourseFormComponent implements OnInit {
 
   createCourse(){
     this.courseForm.get('id').patchValue(this.coursesList.length + 1);
-    this.courseService.postCourse(this.courseForm.value).subscribe(result =>{
+    this.courseService.createtCourse(this.courseForm.value).subscribe(result =>{
       console.log(`Curso : &{result.curso} cadastro com sucesso !`)
     })
     console.log(this.courseForm.value)

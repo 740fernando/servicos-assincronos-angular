@@ -22,7 +22,7 @@ export class CourseService {
   }
 
   // Salva curso no banco - CREATE
-  postCourse(course : Course):Observable<Course>{
+  createtCourse(course : Course):Observable<Course>{
     return this.httpClient.post<Course>(this.apiUrl, course, this.httpOptions)
   }
 }
