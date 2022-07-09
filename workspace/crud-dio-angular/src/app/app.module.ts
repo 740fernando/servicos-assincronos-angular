@@ -4,14 +4,14 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
-import { UsersListComponent } from './pages/users/users-list/users-list.component';
+import {CourseListComponent } from './pages/users/course-list/course-list.component';
 import { CourseFormComponent } from './pages/users/course-form/course-form.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    UsersListComponent,
+    CourseListComponent,
     CourseFormComponent
   ],
   imports: [
