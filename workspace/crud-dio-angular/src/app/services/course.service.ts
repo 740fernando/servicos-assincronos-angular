@@ -7,7 +7,7 @@ import { Course } from '../models/course';
   providedIn: 'root'
 })
 export class CourseService {
-  apiUrl = "https://sheet.best/api/sheets/c01b142d-1a41-47bc-b7d6-541fd9e852ad"
+  apiUrl = "http://localhost:8080/course"
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json'
@@ -17,13 +17,14 @@ export class CourseService {
   constructor(private httpClient: HttpClient) { }
  
   // Salva curso no banco - CREATE
- createtCourse(course : Course):Observable<Course>{
+ createCourse(course : Course):Observable<Course>{
+  console.log(course);
   return this.httpClient.post<Course>(this.apiUrl, course, this.httpOptions)
   }
   
   // Retorna a lista de  cursos - READ
-  getCourses():Observable<Course[]>{
-    return this.httpClient.get<Course[]>(this.apiUrl)
+   getCourses():Observable<Course[]>{
+      return this.httpClient.get<Course[]>(this.apiUrl)
   }
 
   // Exclui o curso do banco - DELETE
