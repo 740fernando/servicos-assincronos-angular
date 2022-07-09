@@ -4,8 +4,8 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
-import {CourseListComponent } from './pages/users/course-list/course-list.component';
-import { CourseFormComponent } from './pages/users/course-form/course-form.component';
+import {CourseListComponent } from './pages/course/course-list/course-list.component';
+import { CourseFormComponent } from './pages/course/course-form/course-form.component';
 
 @NgModule({
   declarations: [
