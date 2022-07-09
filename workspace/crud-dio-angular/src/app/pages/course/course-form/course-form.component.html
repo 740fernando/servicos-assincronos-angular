@@ -1,18 +1,18 @@
 <div class="card w-100 my-5">
     <div class="card-body">
         <h1 class="card-title text-center">Formulário de cursos</h1>
-        <form>
+        <form [formGroup]="courseForm">
             <div class="row my-4">
                 <div class="col-6">
                     <div class="form-floating">
-                        <input type="text" class="form-control" id="curso" placeholder="Digite o seu curso">
+                        <input type="text" class="form-control" formControlName="curso" id="curso" placeholder="Digite o nome do curso">
                         <label for="curso">Curso</label>
                     </div>
                 </div>  
                 <div class="col-6">
                     <div class="form-floating">
-                        <input type="time" class="form-control" id="profissao" placeholder="Digite a duracao do curso">
-                        <label for="profissao">Duracao</label>
+                        <input type="time" class="form-control" formControlName="duracao" id="duracao" placeholder="Digite a duracao do curso">
+                        <label for="duracao">Duracao</label>
                     </div>
                 </div>
             </div>
@@ -20,13 +20,13 @@
             <div class="row my-4">
                 <div class="col-6">
                     <div class="form-floating">
-                        <input type="date" class="form-control" id="inicio" placeholder="Digite a data inicio">
+                        <input type="date" class="form-control" formControlName="inicio" id="inicio" placeholder="Digite a data inicio">
                         <label for="inicio">Inicio</label>
                     </div>
                 </div>
                 <div class="col-6">
                     <div class="form-floating">
-                        <input type="date" class="form-control" id="fim" placeholder="Digite a data fim">
+                        <input type="date" class="form-control" formControlName="fim" id="fim" placeholder="Digite a data fim">
                         <label for="fim">Fim</label>
                     </div>
                 </div>
@@ -35,7 +35,7 @@
             <div class="row my-4">
                 <div class="form-group col-12 mt-4">
                     <button routerLink="/" type="button" class="btn btn-outline-danger float-start">Cancelar</button>
-                    <button type="button" class="btn btn-outline-success float-end">Enviar</button>
+                    <button type="button" class="btn btn-outline-success float-end" (click)="createCourse()">Enviar</button>
                 </div>
             </div>
         </form>

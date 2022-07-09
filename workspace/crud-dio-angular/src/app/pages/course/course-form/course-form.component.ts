@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-course-form',
@@ -6,10 +7,21 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./course-form.component.css']
 })
 export class CourseFormComponent implements OnInit {
-
-  constructor() { }
+  courseForm: FormGroup;
+  constructor(private fb: FormBuilder) { 
+    this.courseForm = this.fb.group({
+      id: 0,
+      curso: '',
+      inicio: '',
+      fim:'',
+      duracao:'',
+    })
+  }
 
   ngOnInit() {
   }
-
+  createCourse(){
+    
+    console.log(this.courseForm.value)
+  }
 }
