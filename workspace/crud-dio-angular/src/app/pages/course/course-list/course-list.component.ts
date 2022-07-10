@@ -21,8 +21,6 @@ export class CourseListComponent implements OnInit {
       console.log(this.courses);
     },(error) => {
       console.log('Error ao executar',error.status)
-    }, ()=>{
-      return this.getCourses();
     });
   }
   

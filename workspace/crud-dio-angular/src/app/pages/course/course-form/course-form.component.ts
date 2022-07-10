@@ -1,8 +1,8 @@
-import { Component, Inject, Injectable, OnInit } from '@angular/core';
+import { Course } from './../../../models/course';
+import { CourseService } from './../../../services/course.service';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Course } from 'src/app/models/course';
-import { CourseService } from 'src/app/services/course.service';
 
 @Component({
   selector: 'app-course-form',
@@ -12,7 +12,7 @@ import { CourseService } from 'src/app/services/course.service';
 export class CourseFormComponent implements OnInit {
   courseForm: FormGroup;
   coursesList: Array<Course> = [];
-  courseId: any;
+  courseId: any = '';
 
   constructor(
     private fb: FormBuilder,
@@ -32,18 +32,20 @@ export class CourseFormComponent implements OnInit {
     this.actRoute.paramMap.subscribe(params => {
       this.courseId = params.get('id');
       console.log(this.courseId);
-      // if(this.courseId !== null) {
-      //   this.courseService.getCourses().subscribe(result => {
-      //     this.courseForm.patchValue({
-      //       id: result[0].id,
-      //       nome: result[0].curso,
-      //       sobrenome: result[0].inicio,
-      //       idade: result[0].fim,
-      //       profissao: result[0].duracao,
-      //     })
-      //   })
-      // }
+      if(this.courseId !== null) {
+        this.courseService.getCourse(this.courseId).subscribe(result => {
+          this.courseForm.patchValue({
+            id: result[0].id,
+            curso: result[0].curso,
+            inicio: result[0].inicio,
+            fim: result[0].fim,
+            duracao: result[0].duracao,
+          })
+        })
+      }
     })
+
+    this.getCourses();
   }
 
   getCourses() {
@@ -56,14 +58,26 @@ export class CourseFormComponent implements OnInit {
     this.courseForm.get('id').patchValue(this.coursesList.length + 1);
     this.courseService.createCourse(this.courseForm.value).subscribe(result =>{
       console.log(`Curso : &{result.curso} cadastro com sucesso !`)
+    },(error)=>{
+
+    },()=>{
+      this.router.navigate(['/']);
     })
-    console.log(this.courseForm.value)
   }
 
+  updateCourse(){
+    this.courseService.updateCourse(this.courseId, this.courseForm.value).subscribe(result =>{
+      console.log('curso autalizado', result);
+    },(error)=>{
+
+    },()=>{
+      this.router.navigate(['/']);
+    })
+  }
 
   actionButton() {
-    if(this.coursesList !== null) {
-      this.createCourse()
+    if(this.courseId !== null) {
+      this.updateCourse()
     }else {
       this.createCourse()
     }
