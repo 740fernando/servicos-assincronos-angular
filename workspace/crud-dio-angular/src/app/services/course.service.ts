@@ -38,8 +38,8 @@ export class CourseService {
   }
 
   // busca curso por id
-  getCourse(id: string):Observable<Course[]>{
-    console.log(this.httpClient.get<Course[]>(`${this.apiUrl}/id/${id}`))
-    return this.httpClient.get<Course[]>(`${this.apiUrl}/id/${id}`)
+  getCourse(id: string):Observable<Course>{
+    console.log(this.httpClient.get<Course>(`${this.apiUrl}/id/${id}`))
+    return this.httpClient.get<Course>(`${this.apiUrl}/id/${id}`)
   }
 }

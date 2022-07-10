@@ -11,7 +11,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class CourseFormComponent implements OnInit {
   courseForm: FormGroup;
-  coursesList: Array<Course> = [];
+  coursesList: Course;
   courseId: any = '';
 
   constructor(
@@ -34,16 +34,19 @@ export class CourseFormComponent implements OnInit {
       console.log(this.courseId);
       if(this.courseId !== null) {
         this.courseService.getCourse(this.courseId).subscribe(result => {
+          console.log(result.inicio)
           this.courseForm.patchValue({
-            id: result[0].id,
-            curso: result[0].curso,
-            inicio: result[0].inicio,
-            fim: result[0].fim,
-            duracao: result[0].duracao,
+            id: result.id,
+            curso: result.curso,
+            inicio: result.inicio,
+            fim: result.fim,
+            duracao: result.duracao,
           })
         })
       }
     })
+
+            
 
     this.getCourses();
   }
