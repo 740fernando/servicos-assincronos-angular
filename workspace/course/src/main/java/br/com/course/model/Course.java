@@ -22,7 +22,7 @@ public class Course implements Serializable {
 	
 	@Id
 	@JsonProperty(value = "id")
-	private Long id;
+	private String id;
 	@JsonProperty(value = "curso")
 	private String curso;
 	@JsonProperty(value = "inicio")

@@ -7,8 +7,8 @@ import br.com.course.model.Course;
 public interface CourseService {
 
 	List<Course> findAll();
-	Course searchForId(Long id);
+	Course searchForId(String id);
 	Course createCourse(Course request);
-	Course deleteCourse(Long id);
+	Course deleteCourse(String id);
 	Course update(Course request);
 }

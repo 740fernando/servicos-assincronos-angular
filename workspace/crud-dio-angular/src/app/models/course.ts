@@ -1,9 +1,9 @@
 import { Time } from "@angular/common";
 
 export interface Course {
-    id: number,
+    id: string,
     curso: string,
-    inicio: Date,
-    fim: Date,
-    duracao: Time;
+    inicio: string,
+    fim: string,
+    duracao: string;
 }

@@ -23,7 +23,7 @@ public class CourseServiceImpl implements CourseService {
 	}
 
 	@Override
-	public Course searchForId(Long id) {
+	public Course searchForId(String id) {
 		return courseRepository.findById(id).orElseThrow(()-> new RuntimeException());
 	}
 
@@ -33,7 +33,7 @@ public class CourseServiceImpl implements CourseService {
 	}
 
 	@Override
-	public Course deleteCourse(Long id) {
+	public Course deleteCourse(String id) {
 		Course courseDeleted = searchForId(id);
 		courseRepository.deleteById(id);
 		return courseDeleted;
